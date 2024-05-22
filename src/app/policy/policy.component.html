@@ -1,0 +1,12 @@
+
+<!-- policy.component.html -->
+<div class="container-fluid">
+  <div *ngFor="let policydata of policysdata" [id]="generateId(policydata.headline)">
+    <h3 class="headline">{{ policydata.headline }}  | <em class="date"><strong>{{ policydata.date }}</strong></em></h3>
+    <p> {{ policydata.country }}</p>
+    <p class="detail"> {{ policydata.detail }}</p>
+    <p class="impact">{{ policydata.impact }}</p><br>
+    <a class="read-more" href="{{ policydata.link }}">Read more</a>
+    <p class="contact"><strong>Contact:</strong> {{ policydata.contact }}</p>
+  </div>
+</div>

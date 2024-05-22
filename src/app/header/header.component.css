@@ -1,0 +1,173 @@
+.nav-link{
+  color: white;
+  margin-left: 45px;
+  font-size: 15px;
+}
+.Global{
+  font-size: 12px;
+  
+}
+/* img{
+  padding-bottom: 6px;
+} */
+.bg{
+  background-color: #000000;
+  font-family: 'Open Sans', Verdana, Helvetica, sans-serif;
+  height: 80px;
+}
+
+.fa-user{
+  color: white;
+  
+}
+.form-control {
+  height: 28px;
+  line-height: 30px;
+}
+
+.btn-outline-light {
+  height: 28px;
+  line-height: 30px;
+}
+
+.fs {
+margin-bottom: 6px;
+}
+
+.dropdown {
+position: relative;
+display: inline-block;
+margin-left: 30px;
+
+}
+
+/* Dropdown button */
+.dropbtn {
+background-color: transparent;
+color: white;
+padding: 8px 16px;
+border: none;
+cursor: pointer;
+font-size: 15px;
+font-family: 'Open Sans', Verdana, Helvetica, sans-serif;
+}
+
+/* Dropdown content (hidden by default) */
+.dropdown-content {
+display: none;
+position: absolute;
+background-color: #3A383A;
+min-width: 160px;
+/* box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); */
+z-index: 1;
+/* text-align: left; */
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+color: #ffffff;
+/* padding: 12px 16px; */
+padding: 6px 6px;
+text-decoration: none;
+display: block;
+font-weight: bold;
+/* font-family: 'Open Sans', Calibri, Helvetica, sans-serif; */
+font-family: 'Open Sans', Verdana, Helvetica, sans-serif;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {
+/* background-color: #63666a; */
+text-decoration: underline;
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+display: block;
+width: 920px;
+margin-left: -100px;
+text-align: left;
+padding-top: 10px;
+}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {
+  border-bottom: 4px solid #86bc25;
+color: #86bc25;
+}
+
+.dropdown:hover .dropbtn .fa-chevron-down {
+  transform: rotate(180deg);
+  font-size: 2px solid;
+}
+
+.col-4 a:nth-child(n+2) {
+  color: #bbbcbc;
+  font-size: 10px;
+  
+}
+
+
+
+.search-container {
+position: relative;
+z-index: 1000;
+padding-bottom: 2px;
+}
+
+.search-container ul {
+position: absolute;
+top: calc(100% + 5px);
+left: 0;
+width: 100%;
+padding: 5px 0;
+max-height: 200px;
+overflow-y: auto;
+scrollbar-width: thin; /* Firefox */
+scrollbar-color: #888 transparent; /* Firefox */
+background-color: #ffffff;
+}
+
+.search-container ul::-webkit-scrollbar {
+width: 8px;
+}
+
+.search-container ul::-webkit-scrollbar-track {
+background: transparent;
+}
+
+.search-container ul::-webkit-scrollbar-thumb {
+background-color: #888;
+border-radius: 4px;
+border: 2px solid transparent;
+}
+
+.search-container ul::-webkit-scrollbar-thumb:hover {
+background-color: #666;
+}
+
+.search-container ul li {
+list-style-type: none;
+padding: 5px 0;
+margin: 0;
+}
+
+.search-container ul li a {
+display: block;
+color: #333;
+text-decoration: none;
+padding: 5px;
+font-size: 12px;
+}
+
+.search-container ul li:hover {
+background-color: #333;
+}
+
+.search-container ul li:hover a {
+color: #ffffff;
+}
+
+.card {
+border: none;
+}

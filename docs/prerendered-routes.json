@@ -1,0 +1,22 @@
+{
+  "routes": [
+    "/article",
+    "/auto",
+    "/casestudies",
+    "/competitor",
+    "/footer",
+    "/header",
+    "/home",
+    "/industryandpartnerships",
+    "/investmentandfunding",
+    "/mainpage",
+    "/other",
+    "/otherevent",
+    "/policy",
+    "/policyandregulation",
+    "/service",
+    "/startup",
+    "/team",
+    "/video"
+  ]
+}

@@ -1,0 +1,29 @@
+/* .carousel-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+img{
+    background-image: cover;
+} */
+
+.carousel {
+    height: 96vh; /* Make carousel fill the viewport height */
+  }
+  .carousel-inner {
+    height: 96%; /* Make carousel items fill the carousel height */
+  }
+  .carousel-item {
+    height: 96%; /* Make images fill the carousel item height */
+  }
+  .carousel-item img {
+    object-fit: cover; /* Cover images to fit the carousel item */
+    width: 100%;
+    height: 120%;
+  }
+  h3{
+    padding-bottom: 15%;
+  }
+  .container-fluid{
+    font-family: 'Open Sans', Calibri, Helvetica, sans-serif;
+  }
