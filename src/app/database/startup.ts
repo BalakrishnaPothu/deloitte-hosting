@@ -212,23 +212,5 @@ export interface startup {
         startupCapability: "mu Space is an aerospace manufacturer and satellite internet service provider in Southeast Asia. Their mission is to solve the natural resources problem on earth by searching for alternative resources in space. Founded in 2017, mu Space manufactures satellite platforms focused on small satellites and provides end-to-end services, including high-performance satellite building solutions, satellite ground station facility services, and reliable access to satellite internet services. RBC Signals, founded in 2015 in the USA, is a provider of global satellite data communication products and solutions. It offers secure space communication solutions in every major frequency band utilizing a worldwide network of both company-owned and partner-owned systems.",
         link: "https://news.satnews.com/2024/04/23/mu-space-rbc-signals-sign-mou-for-satellite-ground-station-facilities-project/",
         contact: "Danielle Sim"
-      }
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-   
-  ];
+      }];
     
