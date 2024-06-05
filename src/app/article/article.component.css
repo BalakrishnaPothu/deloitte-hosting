@@ -56,6 +56,53 @@
     padding-top: 2%;
     /* padding-left: 5%; */
   }
+
+
+
+
+  @media (max-width: 768px) {
+    .container-fluid {
+      height: auto; /* Set height to auto for flexible height */
+      padding-bottom: 20px; /* Add padding at the bottom for spacing */
+    }
+  
+    .col-sm-4 {
+      padding-top: 0; /* Remove top padding for columns */
+      margin-bottom: 20px; /* Add margin at the bottom for spacing */
+    }
+  
+    .card {
+      height: auto; /* Set height to auto for flexible height */
+    }
+  
+    .card-img-overlay {
+      top: auto; /* Reset top position for overlay */
+      height: auto; /* Set height to auto for flexible height */
+      opacity: 1; /* Ensure overlay is visible by default */
+      transition: none; /* Remove transition for overlay */
+      padding: 20px; /* Add padding for better readability */
+    }
+  
+    .card:hover .card-img-overlay {
+      top: auto; /* Reset top position for overlay */
+    }
+  
+    .card-img-overlay .card-title,
+    .card-img-overlay .card-text {
+      opacity: 1; /* Ensure text is visible by default */
+      transition: none; /* Remove transition for text */
+    }
+
+    h5, h4,p {
+      font-size: 100%;
+    }
+  }
+  
+
+
+
+
+
   /* h4{
     padding-left: 1%;
     text-align: center;

@@ -2,8 +2,6 @@ import { Component, OnInit} from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UrlService } from '../url.service';
 import { CommonModule } from '@angular/common';
-import { policydata, policysdata } from '../database/Policydata';
-import { startup, startups } from '../database/startup';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 
 @Component({
@@ -17,131 +15,210 @@ import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 
 
 export class HeaderComponent implements OnInit{
-  allData: (startup | policydata)[] = [...policysdata, ...startups];
-  searchQuery: string = '';
-  filteredResults: (startup | policydata)[] = [];
-  showSuggestions: boolean = false;
-  searchSuggestions: { content: string; item: startup | policydata; }[] = [];
+  
+  // searchQuery: string = '';
+  // showSuggestions: boolean = false;
+  // suggestions: any[] = [];
 
-  constructor(private router: Router, private route: ActivatedRoute) { }
+  // constructor(
+  //   private router: Router,
+  //   private route: ActivatedRoute,
+  //   private urlService: UrlService
+  // ) {}
 
-  ngOnInit(): void {
-    this.route.queryParams.subscribe(params => {
-      const query = params['q'];
-      if (query) {
-        this.searchQuery = query;
-        this.filterResults();
-      }
-    });
-  }
-
-  onSearchInput(event: Event) {
-    const inputElement = event.target as HTMLInputElement;
-    this.searchQuery = inputElement.value;
-    this.filterResults();
-  }
-
-  filterResults() {
-    // Filter the data based on search query
-    this.filteredResults = this.allData.filter((item: startup | policydata) =>
-      Object.values(item).some((val: any) =>
-        typeof val === 'string' && val.toLowerCase().includes(this.searchQuery.toLowerCase())
-      )
-    );
-
-    // Generate suggestions based on filtered results
-    this.searchSuggestions = this.filteredResults.flatMap(item => this.generateSuggestions(item));
-
-    // Show/hide suggestions based on search query length
-    this.showSuggestions = this.searchQuery.length > 0 && this.searchSuggestions.length > 0;
-  }
-
-  // generateSuggestions(item: startup | policydata): { content: string; item: startup | policydata; }[] {
-  //   const suggestions: { content: string; item: startup | policydata; }[] = [];
-  //   Object.values(item).forEach((val: any) => {
-  //     if (typeof val === 'string' && val.toLowerCase().includes(this.searchQuery.toLowerCase())) {
-  //       const words = val.split(' ');
-  //       const index = words.findIndex(word => word.toLowerCase().includes(this.searchQuery.toLowerCase()));
-  //       const start = Math.max(0, index - 3);
-  //       const end = Math.min(words.length, index + 6);
-  //       const context = words.slice(start, end).join(' ');
-  //       suggestions.push({ content: context, item: item });
+  // ngOnInit(): void {
+  //   this.route.params.subscribe(params => {
+  //     const headline = params['headline'];
+  //     if (headline) {
+  //       const path = this.isInvestmentHeadline(headline) ? 'investmentandfunding' : 'industryandpartnerships';
+  //       this.router.navigate([`${path}/${headline}`]);
   //     }
   //   });
-  //   return suggestions;
   // }
 
-  generateSuggestions(item: startup | policydata): { content: string; item: startup | policydata; }[] {
-    const suggestions: { content: string; item: startup | policydata; }[] = [];
-    const queryWords = this.searchQuery.toLowerCase().split(' '); // Split the search query into words
+  // search(): void {
+  //   if (this.searchQuery.length >= 1) {
+  //     this.showSuggestions = true;
+  //     Promise.all([
+  //       this.urlService.getInvestmentEntries(),
+  //       this.urlService.getIndustryEntries()
+  //     ]).then(([investmentEntries, industryEntries]) => {
+  //       const allEntries = [...investmentEntries, ...industryEntries];
+  //       this.suggestions = allEntries.map(entry => {
+  //         const match = this.checkEntryForMatch(entry);
+  //         return match ? { ...entry, snippet: match.snippet } : null;
+  //       }).filter(entry => entry !== null);
+  //     });
+  //   } else {
+  //     this.showSuggestions = false;
+  //     this.suggestions = [];
+  //   }
+  // }
+
+  // redirectToContent(entry: any): void {
+  //   const path = this.isInvestmentType(entry) ? 'investmentandfunding' : 'industryandpartnerships';
+  //   const headline = this.generateId(entry.fields.headline);
+  //   const queryParams = { scrollId: headline };
+  //   this.router.navigate([`${path}/${headline}`], { queryParams }).then(() => {
+  //     // Optional: Scroll logic if needed after navigation
+  //   });
+  // }
+
+  // isInvestmentType(entry: any): boolean {
+  //   return entry.sys.contentType.sys.id === 'investment';
+  // }
+
+  // isInvestmentHeadline(headline: string): boolean {
+  //   return headline.toLowerCase().includes('investment');
+  // }
+
+  // checkEntryForMatch(entry: any): { snippet: string } | null {
+  //   const fieldsToSearch = ['headline', 'detail', 'impact', 'link', 'contact', 'date', 'country'];
+  //   for (const field of fieldsToSearch) {
+  //     if (entry.fields[field] && entry.fields[field].toLowerCase().includes(this.searchQuery.toLowerCase())) {
+  //       return {
+  //         snippet: this.getSnippet(entry.fields[field], this.searchQuery)
+  //       };
+  //     }
+  //   }
+  //   return null;
+  // }
+
+  // getSnippet(text: string, query: string): string {
+  //   const queryIndex = text.toLowerCase().indexOf(query.toLowerCase());
+  //   if (queryIndex === -1) return '';
+  //   const start = Math.max(0, queryIndex - 30);
+  //   const end = Math.min(text.length, queryIndex + query.length + 30);
+  //   return (start > 0 ? '...' : '') + text.substring(start, end) + (end < text.length ? '...' : '');
+  // }
+
+  // generateId(headline: string): string {
+  //   return headline.toLowerCase().replace(/\s+/g, '-').replace(/[^a-zA-Z0-9-]/g, '');
+  // }
+
   
-    Object.values(item).forEach((val: any) => {
-      if (typeof val === 'string') {
-        const words = val.toLowerCase().split(' '); // Split the text into words
-        let hasMatch = false;
-        let context = '';
-  
-        for (let i = 0; i < words.length; i++) {
-          // Check if the current word starts with any of the query words
-          if (queryWords.some(queryWord => words[i].startsWith(queryWord))) {
-            const start = Math.max(0, i - 3);
-            const end = Math.min(words.length, i + 6);
-            context = words.slice(start, end).join(' ');
-            hasMatch = true;
-            break; // Exit the loop after finding a match
-          }
-        }
-  
-        if (hasMatch) {
-          suggestions.unshift({ content: context, item: item }); // Add matched suggestions to the beginning
-        }
+  searchQuery: string = '';
+  showSuggestions: boolean = false;
+  suggestions: any[] = [];
+
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute,
+    private urlService: UrlService
+  ) {}
+
+ 
+
+  ngOnInit(): void {
+    this.route.params.subscribe(params => {
+      const headline = params['headline'];
+      if (headline) {
+        const path = this.isInvestmentHeadline(headline) ? 'investmentandfunding' : 'industryandpartnerships';
+        this.router.navigate([`${path}/${headline}`]);
       }
     });
-  
-    return suggestions;
   }
-  
-  
-  
 
-  // navigateToContent(item: startup | policydata) {
-  //   const headline = ('headline' in item) ? item.headline : (item as any).country;
-  // if ('headline' in item) {
-  //   // It's a startup, navigate to StartupComponent and pass the headline as a parameter
-  //   this.router.navigate(['/startup', this.formatRouteParam(headline)], { queryParams: { headline: this.formatRouteParam(headline) } });
-  // } else {
-  //   // It's a policy data, navigate to PolicyComponent and pass the headline as a parameter
-  //   this.router.navigate(['/policy', this.formatRouteParam(headline)], { queryParams: { headline: this.formatRouteParam(headline) } });
-  // }
-  // }
-
-  navigateToContent(item: startup | policydata) {
-    console.log('Navigating to content:', item);
-    let routePath: string = ''; // Initialize routePath with a default value
-    
-    if ('startupCapability' in item) {
-      console.log('Startup item detected:', item);
-      // It's a startup, navigate to StartupComponent and pass the headline as a parameter
-      routePath = '/startup';
-    } else if ('impact' in item) {
-      console.log('Policy data item detected:', item);
-      // It's a policy data, navigate to PolicyComponent and pass the headline as a parameter
-      routePath = '/policy';
-    }
-  
-    // Check if routePath is empty before navigating
-    if (routePath !== '') {
-      const headline = ('headline' in item) ? item.headline : (item as any).country;
-      this.router.navigate([routePath, this.formatRouteParam(headline)], { queryParams: { q: this.searchQuery } });
+  search(): void {
+    if (this.searchQuery.length >= 1) {
+      this.showSuggestions = true;
+      Promise.all([
+        this.urlService.getInvestmentEntries(),
+        this.urlService.getIndustryEntries(),
+        this.urlService.getOtherEntries(),
+        this.urlService.getStartupEntries(),
+        this.urlService.getCompetitorEntries(),
+        this.urlService.getOtherEventEntries(),
+        this.urlService.getScitechadvancementEntries(),
+        this.urlService.getPolicyandregulationchangeEntries()
+      ]).then(([investmentEntries, industryEntries, otherEntries, startupEntries, competitorEntries, otherEventEntries, scitechadvancementEntries, policyregulationchangeEntries]) => {
+        const allEntries = [...investmentEntries, ...industryEntries, ...otherEntries, ...startupEntries, ...competitorEntries, ...otherEventEntries, ...scitechadvancementEntries, ...policyregulationchangeEntries];
+        this.suggestions = allEntries.map(entry => {
+          const match = this.checkEntryForMatch(entry);
+          return match ? { ...entry, snippet: match.snippet } : null;
+        }).filter(entry => entry !== null);
+      });
     } else {
-      console.error('Route path not determined. Unable to navigate.');
+      this.showSuggestions = false;
+      this.suggestions = [];
     }
   }
 
-  formatRouteParam(param: string): string {
-    // Format the parameter to remove spaces and special characters
-    return param.toLowerCase().replace(/\s+/g, '-').replace(/[^a-zA-Z0-9-]/g, '');
-    
+  redirectToContent(entry: any): void {
+    const headline = this.generateId(entry.fields.headline);
+    const queryParams = { scrollId: headline };
+
+    if (this.isOtherType(entry)) {
+      this.router.navigate(['other', headline], { queryParams });
+    } else if (this.isStartupType(entry)) {
+      this.router.navigate(['startup', headline], { queryParams });
+    } else if (this.isCompetitorType(entry)) {
+      this.router.navigate(['competitor', headline], { queryParams });
+    } else if (this.isOtherEventType(entry)) {
+      this.router.navigate(['otherevent', headline], { queryParams });
+    } else if (this.isScitechadvancementType(entry)) {
+      this.router.navigate(['scitechadvancement', headline], { queryParams });
+    } else if (this.isPolicyRegulationChangeType(entry)) {
+      this.router.navigate(['policyandregulationchange', headline], { queryParams });
+    } else {
+      const path = this.isInvestmentType(entry) ? 'investmentandfunding' : 'industryandpartnerships';
+      this.router.navigate([`${path}/${headline}`], { queryParams });
+    }
   }
 
+  isInvestmentType(entry: any): boolean {
+    return entry.sys.contentType.sys.id === 'investment';
+  }
+
+  isOtherType(entry: any): boolean {
+    return entry.sys.contentType.sys.id === 'other';
+  }
+
+  isStartupType(entry: any): boolean {
+    return entry.sys.contentType.sys.id === 'startup';
+  }
+
+  isCompetitorType(entry: any): boolean {
+    return entry.sys.contentType.sys.id === 'competitor';
+  }
+
+  isOtherEventType(entry: any): boolean {
+    return entry.sys.contentType.sys.id === 'otherevent';
+  }
+
+  isScitechadvancementType(entry: any): boolean {
+    return entry.sys.contentType.sys.id === 'scitechadvancement';
+  }
+
+  isPolicyRegulationChangeType(entry: any): boolean {
+    return entry.sys.contentType.sys.id === 'policyandregulationchange';
+  }
+
+  isInvestmentHeadline(headline: string): boolean {
+    return headline.toLowerCase().includes('investment');
+  }
+
+  checkEntryForMatch(entry: any): { snippet: string } | null {
+    const fieldsToSearch = ['headline', 'detail', 'impact', 'link', 'contact', 'date', 'country', 'startupcapability', 'competitor', 'registrationfee','heading'];
+    for (const field of fieldsToSearch) {
+      if (entry.fields[field] && entry.fields[field].toLowerCase().includes(this.searchQuery.toLowerCase())) {
+        return {
+          snippet: this.getSnippet(entry.fields[field], this.searchQuery)
+        };
+      }
+    }
+    return null;
+  }
+
+  getSnippet(text: string, query: string): string {
+    const queryIndex = text.toLowerCase().indexOf(query.toLowerCase());
+    if (queryIndex === -1) return '';
+    const start = Math.max(0, queryIndex - 30);
+    const end = Math.min(text.length, queryIndex + query.length + 30);
+    return (start > 0 ? '...' : '') + text.substring(start, end) + (end < text.length ? '...' : '');
+  }
+
+  generateId(headline: string): string {
+    return headline.toLowerCase().replace(/\s+/g, '-').replace(/[^a-zA-Z0-9-]/g, '');
+  }
 }

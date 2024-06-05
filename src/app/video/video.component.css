@@ -21,3 +21,22 @@ h4{
     /* text-align: center; */
     /* padding-left: 2%; */
 }
+
+
+
+@media (max-width: 768px) {
+    .video-container {
+      height: auto; /* Set height to auto for flexible height */
+    }
+    
+    .video-container video {
+      width: 100%; /* Make videos fill the width of their containers */
+      height: auto; /* Set height to auto for flexible height */
+    }
+    
+    h5, h4 {
+      padding-left: 5%; /* Adjust padding for smaller screens */
+      text-align: center; /* Center align headings on smaller screens */
+      font-size: 100%;
+    }
+  }

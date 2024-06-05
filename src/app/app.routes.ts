@@ -17,6 +17,8 @@ import { IndustryAndPartnershipsComponent } from './industry-and-partnerships/in
 import { OtherComponent } from './other/other.component';
 import { CompetitorComponent } from './competitor/competitor.component';
 import { OtherEventComponent } from './other-event/other-event.component';
+import { StaSciTechAdvancementComponent } from './sta-sci-tech-advancement/sta-sci-tech-advancement.component';
+import { PolicyRegulationChangeComponent } from './policy-regulation-change/policy-regulation-change.component';
 
 
 export const routes: Routes = [
@@ -31,16 +33,25 @@ export const routes: Routes = [
     {path: 'casestudies', component: CasestudiesComponent},
     {path:'team', component: TeamComponent},
     {path:'auto', component: AutoComponent},
-    {path: 'startup', component: StartupComponent },
     {path: 'policy', component: PolicyComponent },
-    {path: 'startup/:headline', component: StartupComponent },
     {path: 'policy/:headline', component: PolicyComponent },
     {path:'policyandregulation', component: PolicyAndRegulationComponent},
-    {path:'investmentandfunding', component: InvestmentAndFundingComponent},
-    {path:'industryandpartnerships', component: IndustryAndPartnershipsComponent},
-    {path:'other', component: OtherComponent},
+    { path: 'industryandpartnerships', component: IndustryAndPartnershipsComponent },
+    { path: 'industryandpartnerships/:headline', component: IndustryAndPartnershipsComponent },
+    { path: 'investmentandfunding', component: InvestmentAndFundingComponent },
+    { path: 'investmentandfunding/:headline', component: InvestmentAndFundingComponent },
+    { path: 'other', component: OtherComponent },
+    { path: 'other/:headline', component: OtherComponent },
+    { path: 'startup', component: StartupComponent },
+    {path: 'startup/:headline', component: StartupComponent },
     {path:'competitor', component: CompetitorComponent},
+    {path:'competitor/:headline', component: CompetitorComponent},
     {path:'otherevent', component: OtherEventComponent},
+    { path:'otherevent/:headline', component: OtherEventComponent },
+    {path:'scitechadvancement', component: StaSciTechAdvancementComponent},
+    { path: 'scitechadvancement/:headline', component: StaSciTechAdvancementComponent },
+    {path:'policyandregulationchange', component: PolicyRegulationChangeComponent},
+    { path: 'policyandregulationchange/:headline', component: PolicyRegulationChangeComponent},
     { path: '**', redirectTo: '', pathMatch: 'full' }
     
 ]; 

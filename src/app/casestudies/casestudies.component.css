@@ -79,3 +79,28 @@ color: white;
     font-size: 18px;
 }
 
+
+@media (max-width: 768px) {
+    .container-fluid {
+      flex-direction: column; /* Change flex direction to stack cards vertically */
+      align-items: center; /* Center align content */
+      height: auto; /* Auto height */
+      padding: 20px; /* Add padding for spacing */
+    }
+    
+    .card {
+      width: 80%; /* Adjust width to fit smaller screens */
+      height: auto; /* Set height to auto for flexible height */
+      margin: 10px auto; /* Center cards and add spacing */
+    }
+    
+    .col-sm-4 {
+      text-align: center; /* Center align column content */
+    }
+    
+    .hedding {
+      font-size: 100%; /* Adjust heading font size for smaller screens */
+    }
+  }
+  
+

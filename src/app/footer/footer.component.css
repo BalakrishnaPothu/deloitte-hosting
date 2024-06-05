@@ -62,3 +62,18 @@
     width: 16px;
     height: 15px;
   }
+
+
+  @media (max-width: 768px) {
+    .col-sm-4 {
+      padding-top: 3%; /* Adjust padding for smaller screens */
+    }
+  
+    .fa {
+      margin-left: 2%; /* Adjust margin between social icons */
+    }
+    .p,a{
+      font-size: 100%;
+    }
+  }
+  

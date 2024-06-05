@@ -62,7 +62,7 @@
     padding: 20px;
     background-color: black;
     color: #FFFFFF;
-    font-family: 'Open Sans', Calibri, Helvetica, sans-serif;
+    font-family: 'Open Sans', Verdana, Helvetica, sans-serif;
   }
   
   .container-fluid h4 {
@@ -106,4 +106,32 @@
   font-size: smaller;
   font-weight: lighter;
   color: #dad5d5;
+}
+
+
+
+@media (max-width: 768px) {
+  .container-fluid {
+    padding: 10px; /* Adjust padding for smaller screens */
+  }
+
+  .container-fluid h3 {
+    font-size: 100%; /* Decrease font size for smaller screens */
+  }
+
+  .container-fluid h4 {
+    font-size: 100%; /* Decrease font size for smaller screens */
+  }
+
+  .container-fluid p {
+    font-size: 100%; /* Decrease font size for smaller screens */
+  }
+
+  .headline {
+    font-size: 100%; /* Decrease font size for smaller screens */
+  }
+
+  .date, .contact {
+    font-size: 100%; /* Adjust font size for smaller screens */
+  }
 }

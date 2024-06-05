@@ -38,3 +38,34 @@
   /* .card-body{
     margin-bottom: 5%;
   } */
+
+
+
+
+  @media (max-width: 768px) {
+  .fl {
+    height: auto; /* Set height to auto for flexible height */
+    padding-bottom: 20px; /* Add padding at the bottom for spacing */
+  }
+
+  .carousel-item {
+    display: flex;
+    flex-wrap: wrap; /* Allow carousel items to wrap on smaller screens */
+  }
+
+  .col-sm {
+    flex: 0 0 100%; /* Set columns to full width on smaller screens */
+    padding-top: 20px; /* Add top padding for spacing */
+  }
+
+  .zoom {
+    height: auto; /* Set height to auto for flexible height */
+  }
+
+  .text-white {
+    font-size: 16px; /* Decrease font size for smaller screens */
+  }
+  h5,h4{
+    font-size: 100%;
+  }
+}

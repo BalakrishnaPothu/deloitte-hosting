@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "docsdist/deloitte",
+            "outputPath": "dist/",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -36,6 +36,9 @@
             "./node_modules/popper.js/dist/umd/popper.min.js",
             "./node_modules/@fortawesome/fontawesome-free/js/all.min.js"
             ],
+            "allowedCommonJsDependencies": [
+              "contentful"
+            ],
             "server": "src/main.server.ts",
             "prerender": true,
             "ssr": {
@@ -47,12 +50,12 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kb",
-                  "maximumError": "1mb"
+                  "maximumWarning": "3mb",
+                  "maximumError": "3mb"
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "2kb",
+                  "maximumWarning": "3kb",
                   "maximumError": "4kb"
                 }
               ],

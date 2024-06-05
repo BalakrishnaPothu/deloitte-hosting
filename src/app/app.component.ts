@@ -10,12 +10,13 @@ import { CasestudiesComponent } from './casestudies/casestudies.component';
 import { TeamComponent } from './team/team.component';
 import { AutoComponent } from './auto/auto.component';
 import { OtherComponent } from './other/other.component';
+import { PolicyAndRegulationComponent } from './policy-and-regulation/policy-and-regulation.component';
 
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet,HeaderComponent,HomeComponent,ServiceComponent,VideoComponent,ArticleComponent,CasestudiesComponent,TeamComponent, FooterComponent,AutoComponent,OtherComponent],
+  imports: [RouterOutlet,HeaderComponent,HomeComponent,ServiceComponent,VideoComponent,ArticleComponent,CasestudiesComponent,TeamComponent, FooterComponent,AutoComponent,OtherComponent,PolicyAndRegulationComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
